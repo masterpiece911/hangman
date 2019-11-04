@@ -1,0 +1,98 @@
+@import url(https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.207/distr/fira_code.css);
+
+body{
+    padding: 50px;
+    width: 75%;
+    margin: auto;
+}
+h1{
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    font-family: 'Fira Code', Courier, monospace;
+    font-size: 6vw;
+}
+h2{
+    width: 90%;
+    margin: auto;
+    text-align: left;
+    font-family: 'Fira Code', Courier, monospace;
+    font-size: 4vw;
+    
+}
+ul {
+    list-style-type: none;
+    width: fit-content;
+    margin: auto;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
+.alphabetContainer{
+    margin-top: 1.5em;
+    margin-left: 3%;
+}
+.resetButton{
+    width: 100%;
+    /* height: 20px; */
+    background: #00000022;
+    color: black;
+    border:none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 2.7vw;
+    margin-top: 20px;
+    transition: 1s;
+}
+.resetButton:hover{
+    background: #000000cc;
+    color: white;
+    transition: 0.4s;
+}
+.resetButtonContainer{
+    width: 100%;
+    margin: auto;
+}
+.letter{
+    border: none;
+    background: none;
+    margin-top: 2em;
+    font-family: 'Fira Code', Courier, monospace;
+    font-size: 5vw;
+}
+.letterButton{
+    height: 1.5em;
+    width: 1.5em;
+    border: 0.6vw solid black;
+    margin: 0.3vw;
+    background: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 3.2vw;
+    transition-duration: 0.5s;
+}
+.unclicked {
+    border: 0.6vw solid black;
+    background: none;
+    color: black;
+}
+.unclicked:hover {
+    color:white;
+    background: black;
+    border: 0.6vw solid transparent;
+    transition-duration: 0.2s
+}
+.notInWordClicked {
+    border: 0.6vw solid transparent;
+    background: red;
+    color: white;
+}
+.inWordClicked {
+    border: 0.6vw solid transparent;
+    background: green;
+    color: white;
+}
+button:focus{
+    outline:0;
+}
