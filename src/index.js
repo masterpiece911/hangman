@@ -105,7 +105,7 @@ function Status(props) {
             if (tries > 0) {
                 return `you win! 🎉🎉🎉`
             } else {
-                return `game over.`
+                return `game over. you lose. 👎🏽👎🏻👎🏿`
             }
         } else {
             if ( tries === 1) {
