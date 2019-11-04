@@ -3,11 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import wordGenerator from 'random-words';
 
-function Letter(props) {
-
-    const isRevealed = props.isRevealed;
-    const value = props.value;
-
+const Letter = ({isRevealed, value}) => {
     return (
         <button
             className = "letter"
@@ -20,14 +16,12 @@ function Letter(props) {
     )
 }
 
-function Word(props) {
-    const word = props.word;
-    const revealedMap = props.revealed;
-    const isGameFinished = props.isGameFinished;
+function Word({word, revealed, isGameFinished}) {
+
     const wordItems = [...word].map((char, inx) =>
         <li key={inx}>
             <Letter 
-                isRevealed={isGameFinished ? isGameFinished :revealedMap.get(char)} 
+                isRevealed = {isGameFinished ? isGameFinished : revealed.get(char)} 
                 value={char}
             />
         </li>
@@ -38,26 +32,11 @@ function Word(props) {
     )
 }
 
-function LetterButton(props) {
-
-    const isClicked = props.isClicked;
-    const onClick = props.onClick;
-    const letterInWord = props.letterInWord;
-    const letter = props.letter;
-
-    const buttonClass = (isClicked, letterInWord) => {
-        if (isClicked) {
-            if (letterInWord) {
-                return 'inWordClicked letterButton';
-            } else {
-                return 'notInWordClicked letterButton';
-            }
-        } else return 'unclicked letterButton'
-    }
+const LetterButton = ({isClicked, onClick, letterInWord, letter}) => {
 
     return (
         <button
-            className = {buttonClass(isClicked, letterInWord)}
+            className = {isClicked ? (letterInWord ? `inWordClicked letterButton` : `notInWordClicked letterButton`) : `unclicked letterButton`}
             onClick = {onClick}    
         >
             {letter}
@@ -65,15 +44,13 @@ function LetterButton(props) {
     )
 }
 
-function AlphabetButtons(props) {
-    const revealedMap = props.revealed;
-    const letterSelectedFunction = props.onLetterSelected;
-    const word = props.word;
+function AlphabetButtons({revealed, onLetterSelected, word}) {
+
     const alphabetItems = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'].map((char, inx) =>
         <li key={inx}>
             <LetterButton
-                isClicked = {revealedMap.get(char)}
-                onClick = {() => letterSelectedFunction(char)}
+                isClicked = {revealed.get(char)}
+                onClick = {() => onLetterSelected(char)}
                 letter = {char}
                 letterInWord = {word.includes(char)}
             />
@@ -85,41 +62,23 @@ function AlphabetButtons(props) {
     );
 }
 
-function ResetButton(props) {
+const ResetButton = ({onClick}) => {
     return (
         <button
             className = "resetButton"
-            onClick = {props.onClick}
+            onClick = {onClick}
         >
             NEW GAME
         </button>
-    );
+    )
 }
 
-function Status(props) {
-
-    const tries = props.tries;
-    const isGameFinished = props.isGameFinished;
-    const status = (tries, isGameFinished) => {
-        if (isGameFinished) {
-            if (tries > 0) {
-                return `you win! 🎉🎉🎉`
-            } else {
-                return `game over. you lose. 👎🏽👎🏻👎🏿`
-            }
-        } else {
-            if ( tries === 1) {
-                return `${tries} attempt remaining.`
-            } else {
-                return `${tries} attempts remaining.`
-            }
-        }
-    }
-
+const Status = ({tries, isGameFinished}) => {
     return (
-        <h2>{status(tries, isGameFinished)}</h2>
-    );
-
+        <h2>
+            {isGameFinished ? (tries > 0 ? `you win! 🎉🎉🎉` : `game over. you lose. 👎🏽👎🏻👎🏿`) : (tries === 1 ? `${tries} attempt remaining.` : `${tries} attempts remaining.`)}
+        </h2>
+    )
 }
 
 function Game() {
