@@ -39,7 +39,7 @@ li {
     background: #00000022;
     color: black;
     border:none;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Apple Gothic', 'Open Sans', sans-serif;
     font-size: 2.7vw;
     margin-top: 20px;
     transition: 1s;
@@ -66,8 +66,9 @@ li {
     border: 0.6vw solid black;
     margin: 0.3vw;
     background: none;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Apple Gothic', 'Open Sans', sans-serif;
     font-size: 3.2vw;
+    text-align: center;
     transition-duration: 0.5s;
 }
 .unclicked {
