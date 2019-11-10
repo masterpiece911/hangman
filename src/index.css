@@ -1,5 +1,7 @@
 @import url(https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.207/distr/fira_code.css);
 
+@import url('https://rsms.me/inter/inter.css');
+
 body{
     padding: 50px;
     width: 75%;
@@ -7,7 +9,7 @@ body{
 }
 h1{
     width: 100%;
-    margin: 1em, auto;
+    margin: 3vh auto;
     text-align: center;
     font-family: 'Fira Code', Courier, monospace;
     font-size: 6vw;
@@ -25,13 +27,14 @@ ul {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    padding: 0px;
+    padding: 0;
+    margin: 1vh auto;
 }
 li {
     float: left;
 }
 .alphabetContainer{
-    margin-top: 1.5em;
+    margin-top: 1.5vh;
 }
 .resetButton{
     width: 100%;
@@ -39,9 +42,10 @@ li {
     background: #00000022;
     color: black;
     border:none;
-    font-family: 'Franklin Gothic Medium', 'Apple Gothic', 'Open Sans', sans-serif;
+    font-family: 'Inter', 'Franklin Gothic Medium', 'Apple Gothic', 'Open Sans', sans-serif;
     font-size: 2.7vw;
-    margin-top: 20px;
+    font-weight: 900;
+    margin-top: 1vh;
     transition: 1s;
 }
 .resetButton:hover{
@@ -66,8 +70,10 @@ li {
     border: 0.6vw solid black;
     margin: 0.3vw;
     background: none;
-    font-family: 'Franklin Gothic Medium', 'Apple Gothic', 'Open Sans', sans-serif;
-    font-size: 3.2vw;
+    font-family: 'Inter', 'Franklin Gothic Medium', 'Apple Gothic', 'Open Sans', sans-serif;
+    font-weight: 900;
+    padding: 0;
+    font-size: 3.4vw;
     text-align: center;
     transition-duration: 0.5s;
 }
