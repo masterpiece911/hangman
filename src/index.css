@@ -46,7 +46,8 @@ li {
     font-size: 2.7vw;
     font-weight: 900;
     margin-top: 1vh;
-    transition: 1s;
+    transition: 5s;
+    transition-timing-function: ease;
 }
 .resetButton:hover{
     background: #000000cc;
