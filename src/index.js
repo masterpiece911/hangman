@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import wordGenerator from 'random-words';
+import KeyboardEventHandler from 'react-keyboard-event-handler';
 
 const Letter = ({isRevealed, value}) => {
     return (
@@ -38,6 +39,7 @@ const LetterButton = ({isClicked, onClick, letterInWord, letter}) => {
         <button
             className = {isClicked ? (letterInWord ? `inWordClicked letterButton` : `notInWordClicked letterButton`) : `unclicked letterButton`}
             onClick = {onClick}    
+            title = 'you can also type a letter on your keyboard'
         >
             {letter}
         </button>
@@ -65,6 +67,7 @@ function AlphabetButtons({revealed, onLetterSelected, word}) {
 const ResetButton = ({onClick}) => {
     return (
         <button
+            title = "you can also press enter key to restart"
             className = "resetButton"
             onClick = {onClick}
         >
@@ -113,8 +116,28 @@ function Game() {
                     setRevealedMap(newMap);
     }
 
+    const keyboardEntry = (entry) => {
+        if (entry === 'enter') {
+            resetGame();
+        } else {
+            letterSelected(entry.toUpperCase());
+        }
+    }
+
+    const resetGame = () => {
+        let newWord = randomWord();
+        setLetters([...newWord]);
+        setWord(newWord);
+        setRevealedMap(resetRevealedMap());
+        setTries(resetTries());
+    }
+
     return (
         <div>
+        <KeyboardEventHandler
+        handleKeys={[...'abcdefghijklmnopqrstuvwxyz', 'enter']}
+        handleFocusableElements = {true}
+        onKeyEvent={(key, _) => keyboardEntry(key)} />    
             <div><h1>{title}</h1></div>
         <div className="wordContainer">
             <Word 
@@ -144,13 +167,7 @@ function Game() {
         </div>
         <div className="resetButtonContainer">
             <ResetButton
-                onClick = {() => {
-                    let newWord = randomWord();
-                    setLetters([...newWord]);
-                    setWord(newWord);
-                    setRevealedMap(resetRevealedMap());
-                    setTries(resetTries());
-                }}
+                onClick = {() => resetGame()}
             />
         </div>
         </div>
