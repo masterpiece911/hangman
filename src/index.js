@@ -116,7 +116,7 @@ function Game() {
     const keyboardEntry = (entry) => {
         if (entry === 'enter') {
             resetGame();
-        } else {
+        } else if (! isGameFinished) {
             letterSelected(entry.toUpperCase());
         }
     }
