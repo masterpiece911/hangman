@@ -2,24 +2,37 @@
 
 @import url('https://rsms.me/inter/inter.css');
 
+.fira{
+    font-family: 'Fira Code', Courier, monospace;
+}
+.inter{
+    font-family: 'Inter', 'Franklin Gothic Medium', 'Apple Sans', 'Open Sans', sans-serif;
+}
 body{
-    padding: 50px;
     width: 75%;
     margin: auto;
+    display: flex;
+    flex-flow: column nowrap;
 }
-h1{
+.titleContainer{
     width: 100%;
-    margin: 3vh auto;
-    text-align: center;
-    font-family: 'Fira Code', Courier, monospace;
-    font-size: 6vw;
+    padding: 2rem 0 0 0;
+    justify-content: center;
 }
-h2{
-    width: 90%;
-    margin: auto;
+.title {
     text-align: center;
-    font-family: 'Fira Code', Courier, monospace;
+    font-size: 6vw;
+    font-weight: 900;
+}
+.statusContainer{
+    width: 100%;
+}
+.status{
+    width: 90%;
+    margin: 1.25vh auto;
+    text-align: center;
     font-size: 4vw;
+    font-weight: 700;
 }
 ul {
     list-style-type: none;
@@ -28,7 +41,7 @@ ul {
     justify-content: center;
     flex-wrap: wrap;
     padding: 0;
-    margin: 1vh auto;
+    margin: 0 auto;
 }
 li {
     float: left;
@@ -42,10 +55,8 @@ li {
     background: #00000022;
     color: black;
     border:none;
-    font-family: 'Inter', 'Franklin Gothic Medium', 'Apple Gothic', 'Open Sans', sans-serif;
     font-size: 2.7vw;
     font-weight: 900;
-    margin-top: 1vh;
     transition: 5s;
     transition-timing-function: ease;
 }
@@ -57,45 +68,102 @@ li {
 .resetButtonContainer{
     width: 100%;
     margin: auto;
+    padding: 1.5vw 0;
 }
 .letter{
     border: none;
     background: none;
+    padding: 0 0.5vw;
     /* margin-top: 2em; */
-    font-family: 'Fira Code', Courier, monospace;
     font-size: 5vw;
 }
-.letterButton{
+.alphabetButton{
     height: 1.5em;
     width: 1.5em;
     border: 0.6vw solid black;
     margin: 0.3vw;
     background: none;
-    font-family: 'Inter', 'Franklin Gothic Medium', 'Apple Gothic', 'Open Sans', sans-serif;
     font-weight: 900;
     padding: 0;
     font-size: 3.4vw;
     text-align: center;
     transition-duration: 0.5s;
 }
+@media(max-width: 768px) {
+    body{
+        width: 90%;
+    }
+    .titleContainer{
+        padding: 0.5rem 0 0.2rem 0;
+    }
+    .title{
+        font-size: 6vw;
+    }
+    .letter{
+        font-size: 7vw;
+    }
+    .status{
+        width: 100%;
+        font-size: 4vw;
+        margin: 0.4vh auto;
+    }
+    .alphabetContainer{
+        margin-top: 0.7vh;
+    }
+    .alphabetButton{
+        border: 0.9vw solid black;
+        margin: 0.45vw;
+        font-size: 5vw;
+    }
+    .resetButton{
+        font-size: 3vw;
+    }
+}
+@media(max-width: 480px) {
+    body{
+        width: 90%;
+    }
+    .title{
+        font-size: 8vw;
+    }
+    .status{
+        width: 100%;
+        font-size: 6vw;
+        margin: 0.4vh auto;
+    }
+    .alphabetContainer{
+        margin-top: 0.7vh;
+    }
+    .letter{
+        font-size: 9vw;
+    }
+    .alphabetButton{
+        border: 1.6vw solid black;
+        margin: 0.8vw;
+        font-size: 9vw;
+    }
+    .resetButton{
+        font-size: 5.4vw;
+    }
+}
 .unclicked {
-    border: 0.6vw solid black;
+    border-color: black;
     background: none;
     color: black;
 }
 .unclicked:hover {
     color:white;
     background: black;
-    border: 0.6vw solid transparent;
+    border-color: transparent;
     transition-duration: 0.2s
 }
 .notInWordClicked {
-    border: 0.6vw solid transparent;
+    border-color: transparent;
     background: red;
     color: white;
 }
 .inWordClicked {
-    border: 0.6vw solid transparent;
+    border-color: transparent;
     background: green;
     color: white;
 }

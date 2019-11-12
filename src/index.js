@@ -6,14 +6,11 @@ import KeyboardEventHandler from 'react-keyboard-event-handler';
 
 const Letter = ({isRevealed, value}) => {
     return (
-        <button
-            className = "letter"
-            style = {{
-                border: isRevealed ? 'none' : '1px'
-            }}
+        <span
+            className = "letter fira"
         >
             {isRevealed ? value : '_'}
-        </button>
+        </span>
     )
 }
 
@@ -37,7 +34,7 @@ const LetterButton = ({isClicked, onClick, letterInWord, letter}) => {
 
     return (
         <button
-            className = {isClicked ? (letterInWord ? `inWordClicked letterButton` : `notInWordClicked letterButton`) : `unclicked letterButton`}
+            className = {isClicked ? (letterInWord ? `inWordClicked alphabetButton inter` : `notInWordClicked alphabetButton inter`) : `unclicked alphabetButton inter`}
             onClick = {onClick}    
             title = 'you can also type a letter on your keyboard'
         >
@@ -68,7 +65,7 @@ const ResetButton = ({onClick}) => {
     return (
         <button
             title = "you can also press enter key to restart"
-            className = "resetButton"
+            className = "resetButton inter"
             onClick = {onClick}
         >
             NEW GAME
@@ -78,9 +75,9 @@ const ResetButton = ({onClick}) => {
 
 const Status = ({tries, isGameFinished}) => {
     return (
-        <h2>
+        <div className="statusContainer fira status">
             {isGameFinished ? (tries > 0 ? `you win! 🎉🎉🎉` : `game over. you lose. 👎🏽👎🏻👎🏿`) : (tries === 1 ? `${tries} attempt remaining.` : `${tries} attempts remaining.`)}
-        </h2>
+        </div>
     )
 }
 
@@ -138,7 +135,11 @@ function Game() {
         handleKeys={[...'abcdefghijklmnopqrstuvwxyz', 'enter']}
         handleFocusableElements = {true}
         onKeyEvent={(key, _) => keyboardEntry(key)} />    
-            <div><h1>{title}</h1></div>
+            <div
+                className="titleContainer title fira"
+            >   
+                {title}
+            </div>
         <div className="wordContainer">
             <Word 
                 word = {word}
@@ -146,12 +147,10 @@ function Game() {
                 isGameFinished = {isGameFinished}
             />
         </div>
-        <div className="statusContainer">
-            <Status
-                tries = {tries}
-                isGameFinished = {isGameFinished}
-            />
-        </div>
+        <Status
+            tries = {tries}
+            isGameFinished = {isGameFinished}
+        />
         <div 
             className="alphabetContainer"
             style = {{
