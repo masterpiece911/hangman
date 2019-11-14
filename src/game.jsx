@@ -7,13 +7,14 @@ import AlphabetButtons from './alphabet_buttons';
 import {
   randomWord, resetRevealedMap, resetTries, gameFinished,
 } from './gameHelpers';
+import Title from './title';
 
 export function Game() {
   const [word, setWord] = useState(randomWord());
   const [letters, setLetters] = useState([...word]);
   const [revealedMap, setRevealedMap] = useState(resetRevealedMap());
   const [tries, setTries] = useState(resetTries());
-  const title = '==> hangman. <==';
+  // const title = '==> hangman. <==';
 
   const isGameFinished = gameFinished(tries, letters);
 
@@ -55,11 +56,10 @@ export function Game() {
         handleFocusableElements
         onKeyEvent={(key) => keyboardEntry(key)}
       />
-      <div
-        className="titleContainer title fira"
-      >
-        {title}
-      </div>
+      <Title
+        tries={tries}
+        isGameFinished={isGameFinished}
+      />
       <div className="wordContainer">
         <Word
           word={word}

@@ -170,3 +170,7 @@ li {
 button:focus{
     outline:0;
 }
+svg{
+    width: 6vw;
+    height: 6vw;
+}
