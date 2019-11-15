@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@testing-library/react": "^9.3.2",
     "prop-types": "^15.7.2",
     "random-words": "^1.1.0",
     "react": "^16.11.0",
@@ -10,8 +11,8 @@
     "react-keyboard-event-handler": "^1.5.1",
     "react-scripts": "3.2.0",
     "react-test-renderer": "^16.11.0",
-    "typescript": "^3.6.4",
-    "@testing-library/react": "^9.3.2"
+    "run-script-os": "^1.0.7",
+    "typescript": "^3.6.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -20,7 +21,9 @@
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.js",
     "lint:fix": "eslint --fix src/**/*.js",
-    "test:all": "set CI=true && react-scripts test && npm run lint"
+    "testall": "run-script-os",
+    "testall:win32": "set CI=true && react-scripts test && npm run lint",
+    "testall:nix": "CI=true && react-scripts test && npm run lint"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -50,7 +53,8 @@
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint:fix",
-      "pre-push": "npm run test:all"
+      "pre-push": "npm run testall",
+      "post-merge": "npm run build"
     }
   }
 }
