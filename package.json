@@ -56,5 +56,6 @@
       "pre-push": "npm run testall",
       "post-merge": "npm run build"
     }
-  }
+  },
+  "homepage": "https://pwp.um.ifi.lmu.de/g11"
 }
