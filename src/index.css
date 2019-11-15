@@ -59,11 +59,13 @@ li {
     font-weight: 900;
     transition: 5s;
     transition-timing-function: ease;
+    transition-property: background, color;
 }
 .resetButton:hover{
     background: #000000cc;
     color: white;
     transition: 0.4s;
+    transition-property: background, color;
 }
 .resetButtonContainer{
     width: 100%;
@@ -89,7 +91,7 @@ li {
     text-align: center;
     transition-duration: 0.5s;
 }
-@media(max-width: 768px) {
+@media(max-width: 1200px) {
     body{
         width: 90%;
     }
@@ -116,7 +118,7 @@ li {
         font-size: 5vw;
     }
     .resetButton{
-        font-size: 3vw;
+        font-size: 4vw;
     }
 }
 @media(max-width: 480px) {
@@ -143,7 +145,7 @@ li {
         font-size: 9vw;
     }
     .resetButton{
-        font-size: 5.4vw;
+        font-size: 8vw;
     }
 }
 .unclicked {
