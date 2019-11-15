@@ -52,5 +52,6 @@
       "pre-commit": "npm run lint:fix",
       "pre-push": "npm run test:all"
     }
-  }
+  },
+  "homepage": "https://pwp.um.ifi.lmu.de/g11"
 }
