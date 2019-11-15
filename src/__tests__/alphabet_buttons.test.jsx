@@ -2,6 +2,8 @@ import React from 'react';
 import { render, fireEvent, cleanup } from '@testing-library/react';
 import AlphabetButtons from '../alphabet_buttons';
 import { resetRevealedMap } from '../gameHelpers';
+import { randomAlphabetMap, alphabet } from '../utils/testHelper';
+
 
 describe('Alphabet Button', () => {
   afterEach(() => {
@@ -17,7 +19,7 @@ describe('Alphabet Button', () => {
       const { container } = render(<AlphabetButtons word="TESTINGTON" onLetterSelected={jest.fn()} revealed={resetRevealedMap()} />);
 
       const buttons = container.getElementsByClassName('alphabetButton');
-      expect(buttons.length).toBe([...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'].length);
+      expect(buttons.length).toBe([...alphabet].length);
     });
     it('creates unclicked buttons', () => {
       const { container } = render(<AlphabetButtons word="TESTINGTON" onLetterSelected={jest.fn()} revealed={resetRevealedMap()} />);
@@ -27,6 +29,33 @@ describe('Alphabet Button', () => {
 
       expect(clickedButtonsA.length).toBe(0);
       expect(clickedButtonsB.length).toBe(0);
+    });
+    it('creates correct number of clicked buttons', () => {
+      const alphabetMap = randomAlphabetMap();
+      const { getByText } = render(
+        <AlphabetButtons
+          word="TESTINGTON"
+          onLetterSelected={jest.fn()}
+          revealed={alphabetMap}
+        />,
+      );
+
+      const actualClickedButtons = Array.from(alphabetMap.values()).reduce((counter, value) => {
+        if (value) {
+          return counter + 1;
+        }
+        return counter;
+      }, 0);
+      const clickedButtons = Array.from(alphabetMap.entries()).reduce((counter, value) => {
+        const { className } = getByText(value[0]);
+        if (value[1]) {
+          expect(className).not.toBe('unclicked alphabetButton inter');
+          return counter + 1;
+        }
+        expect(className).toBe('unclicked alphabetButton inter');
+        return counter;
+      }, 0);
+      expect(actualClickedButtons).toBe(clickedButtons);
     });
   });
 
