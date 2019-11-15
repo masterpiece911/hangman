@@ -2,6 +2,7 @@ import React from 'react';
 import { render, cleanup } from '@testing-library/react';
 import Word from '../word';
 import { resetRevealedMap, randomWord } from '../gameHelpers';
+import { randomAlphabetMap } from '../utils/testHelper';
 
 describe('Word', () => {
   afterEach(() => {
@@ -34,6 +35,32 @@ describe('Word', () => {
       const unrevealedLetters = Array.prototype.filter.call(letters, (letter) => letter.innerHTML !== '_');
 
       expect(unrevealedLetters.length).toBe(0);
+    });
+  });
+
+  describe('random input', () => {
+    it('reveals letters correctly', () => {
+      const word = randomWord();
+      const revealedMap = randomAlphabetMap();
+
+      const { container } = render(
+        <Word
+          word={word}
+          revealed={revealedMap}
+          isGameFinished={false}
+        />,
+      );
+
+      const letters = container.getElementsByClassName('letter');
+
+      [...word].forEach((letter, index) => {
+        const output = letters[index].innerHTML;
+        if (revealedMap.get(letter)) {
+          expect(output).toBe(letter);
+        } else {
+          expect(output).toBe('_');
+        }
+      });
     });
   });
 });
