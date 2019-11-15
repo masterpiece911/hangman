@@ -1,1 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" viewBox="0 0 512 512"><defs><style>.a{clip-path:url(#b);}.b{fill:rgba(255,255,255,0);}</style><clipPath id="b"><rect width="512" height="512"/></clipPath></defs><g id="a" class="a"><rect class="b" width="512" height="512"/><circle cx="60" cy="60" r="60" transform="translate(32 360)"/></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <clipPath id="clip-hangman">
+      <rect width="512" height="512"/>
+    </clipPath>
+  </defs>
+  <g id="hangman" clip-path="url(#clip-hangman)">
+    <circle id="Ellipse_1" data-name="Ellipse 1" cx="60" cy="60" r="60" transform="translate(32 360)"/>
+  </g>
+</svg>

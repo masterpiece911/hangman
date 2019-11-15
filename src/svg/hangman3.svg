@@ -1,1 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" viewBox="0 0 512 512"><defs><style>.a{clip-path:url(#b);}.b{font-size:60px;font-family:FiraCode-Retina, Fira Code Retina;}.c{fill:rgba(255,255,255,0);}</style><clipPath id="b"><rect width="512" height="512"/></clipPath></defs><g id="a" class="a"><rect class="c" width="512" height="512"/><text class="b" transform="translate(108 32)"><tspan x="0" y="55" xml:space="preserve"> ┏━━━━━━</tspan><tspan x="0" y="128" xml:space="preserve"> ┃     </tspan><tspan x="0" y="201" xml:space="preserve"> ┃      </tspan><tspan x="0" y="274" xml:space="preserve"> ┃      </tspan><tspan x="0" y="347" xml:space="preserve"> ┃</tspan><tspan x="0" y="420">━┻━━━━━━</tspan></text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <clipPath id="clip-hangman3">
+      <rect width="512" height="512"/>
+    </clipPath>
+  </defs>
+  <g id="hangman3" clip-path="url(#clip-hangman3)">
+    <g id="base">
+      <line id="Line_1" data-name="Line 1" x2="448" transform="translate(32 468)" fill="none" stroke="#000" stroke-width="24"/>
+      <line id="Line_11" data-name="Line 11" y1="48" transform="translate(92 432)" fill="none" stroke="#000" stroke-width="8"/>
+    </g>
+    <g id="vertical">
+      <line id="Line_2" data-name="Line 2" y2="448" transform="translate(92 32)" fill="none" stroke="#000" stroke-width="24"/>
+      <line id="Line_12" data-name="Line 12" x2="48" transform="translate(92 48)" fill="none" stroke="#000" stroke-width="8"/>
+    </g>
+    <g id="horizontal">
+      <line id="Line_3" data-name="Line 3" x1="344" transform="translate(88 48)" fill="none" stroke="#000" stroke-width="24"/>
+    </g>
+  </g>
+</svg>

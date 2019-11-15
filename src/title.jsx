@@ -12,7 +12,7 @@ import { ReactComponent as Hangman8 } from './svg/hangman8.svg';
 
 const Title = ({ tries, isGameFinished }) => {
   const titleA = '==> hangman';
-  const titleB = ' <==';
+  const titleB = '<==';
 
   const getHangman = (fTries, fGameFinished) => {
     if (fGameFinished) {
