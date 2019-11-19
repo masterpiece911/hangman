@@ -59,6 +59,8 @@ export function Game() {
       <Title
         tries={tries}
         isGameFinished={isGameFinished}
+        // gameStarted={revealedMap.values().includes(true)}
+        gameStarted={Array.from(revealedMap.values()).includes(true)}
       />
       <div className="wordContainer">
         <Word

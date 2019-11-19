@@ -5,47 +5,38 @@
     </clipPath>
   </defs>
   <g id="hangman7" clip-path="url(#clip-hangman7)">
-    <g id="base">
-      <line id="Line_1" data-name="Line 1" x2="448" transform="translate(32 468)" fill="none" stroke="#000" stroke-width="24"/>
-      <line id="Line_11" data-name="Line 11" y1="48" transform="translate(92 432)" fill="none" stroke="#000" stroke-width="8"/>
+    <g id="base" transform="translate(0 458)">
+      <rect id="Rectangle_3" data-name="Rectangle 3" width="512" height="26" transform="translate(0 28)"/>
+      <rect id="Rectangle_4" data-name="Rectangle 4" width="10" height="54" transform="translate(64)"/>
     </g>
-    <g id="vertical">
-      <line id="Line_2" data-name="Line 2" y2="448" transform="translate(92 32)" fill="none" stroke="#000" stroke-width="24"/>
-      <line id="Line_12" data-name="Line 12" x2="48" transform="translate(92 48)" fill="none" stroke="#000" stroke-width="8"/>
+    <g id="vertical" transform="translate(54)">
+      <rect id="Rectangle_5" data-name="Rectangle 5" width="28" height="512"/>
+      <rect id="Rectangle_6" data-name="Rectangle 6" width="54" height="8" transform="translate(14 14)"/>
     </g>
-    <g id="horizontal">
-      <line id="Line_3" data-name="Line 3" x1="344" transform="translate(88 48)" fill="none" stroke="#000" stroke-width="24"/>
+    <g id="horizontal" transform="translate(64 4)">
+      <rect id="Rectangle_7" data-name="Rectangle 7" width="394" height="28"/>
     </g>
-    <g id="support">
-      <line id="Line_4" data-name="Line 4" x1="96" y2="96" transform="translate(88.5 48.5)" fill="none" stroke="#000" stroke-width="24"/>
+    <g id="support" transform="translate(82.286 32.036)">
+      <path id="Path_1" data-name="Path 1" d="M5342,119.424l59.526-59.393H5440.1L5342,159.262Z" transform="translate(-5342 -60.031)"/>
     </g>
-    <g id="rope">
-      <line id="Line_5" data-name="Line 5" y1="72" transform="translate(348 56)" fill="none" stroke="#000" stroke-width="8"/>
+    <g id="rope" transform="translate(356 28)">
+      <rect id="Rectangle_8" data-name="Rectangle 8" width="10" height="76"/>
     </g>
-    <g id="face">
-      <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(316 120)" fill="none" stroke="#000" stroke-width="8">
-        <circle cx="32" cy="32" r="32" stroke="none"/>
-        <circle cx="32" cy="32" r="28" fill="none"/>
+    <g id="face" transform="translate(324 100)">
+      <g id="Ellipse_2" data-name="Ellipse 2" fill="none" stroke="#000" stroke-width="8">
+        <circle cx="37" cy="37" r="37" stroke="none"/>
+        <circle cx="37" cy="37" r="33" fill="none"/>
       </g>
-      <g id="Ellipse_3" data-name="Ellipse 3" transform="translate(336 140)" stroke="#000" stroke-width="8">
-        <circle cx="4" cy="4" r="4" stroke="none"/>
-        <circle cx="4" cy="4" fill="none"/>
-      </g>
-      <g id="Ellipse_4" data-name="Ellipse 4" transform="translate(352 140)" stroke="#000" stroke-width="8">
-        <circle cx="4" cy="4" r="4" stroke="none"/>
-        <circle cx="4" cy="4" fill="none"/>
-      </g>
-      <g id="Subtraction_1" data-name="Subtraction 1" transform="translate(5574 155.001)">
-        <path d="M -5216.1650390625 10.99934387207031 L -5235.8369140625 10.99934387207031 C -5235.47119140625 8.795942306518555 -5234.5009765625 6.772524356842041 -5233.01611328125 5.164183616638184 C -5231.1328125 3.123723745346069 -5228.64111328125 2.000003814697266 -5226 2.000003814697266 C -5223.35986328125 2.000003814697266 -5220.8681640625 3.123723745346069 -5218.98486328125 5.164154052734375 C -5217.50048828125 6.772243499755859 -5216.53076171875 8.795852661132813 -5216.1650390625 10.99934387207031 Z" stroke="none"/>
-        <path d="M -5218.83154296875 8.999343872070313 C -5219.23486328125 8.088354110717773 -5219.7802734375 7.251283168792725 -5220.4541015625 6.520763874053955 C -5221.955078125 4.895223617553711 -5223.92431640625 4.000003814697266 -5226 4.000003814697266 C -5228.076171875 4.000003814697266 -5230.0458984375 4.895223617553711 -5231.546875 6.520813941955566 C -5232.22119140625 7.25137996673584 -5232.7666015625 8.088582038879395 -5233.17041015625 8.999343872070313 L -5218.83154296875 8.999343872070313 M -5214.0009765625 12.99934387207031 L -5214.00146484375 12.99934387207031 L -5238.0009765625 12.99934387207031 C -5238.0009765625 9.526273727416992 -5236.751953125 6.262283802032471 -5234.48583984375 3.807553768157959 C -5232.21923828125 1.352213859558105 -5229.2060546875 3.84338363801362e-06 -5226 3.84338363801362e-06 C -5222.794921875 3.84338363801362e-06 -5219.78173828125 1.352213859558105 -5217.51513671875 3.807553768157959 C -5215.24951171875 6.262593746185303 -5214.00146484375 9.526583671569824 -5214.0009765625 12.99826431274414 L -5214.0009765625 12.99934387207031 Z" stroke="none"/>
-      </g>
+      <circle id="Ellipse_3" data-name="Ellipse 3" cx="5" cy="5" r="5" transform="translate(22 22)"/>
+      <ellipse id="Ellipse_4" data-name="Ellipse 4" cx="4" cy="5" rx="4" ry="5" transform="translate(42 22)"/>
+      <path id="Subtraction_1" data-name="Subtraction 1" d="M27.429,14.856H0a15.4,15.4,0,0,1,4.017-10.5,12.981,12.981,0,0,1,19.395,0,15.41,15.41,0,0,1,4.017,10.5Z" transform="translate(22.857 40.001)"/>
     </g>
-    <g id="torso">
-      <line id="Line_6" data-name="Line 6" y1="92" transform="translate(348 192)" fill="none" stroke="#000" stroke-width="8"/>
+    <g id="torso" transform="translate(356 182)">
+      <rect id="Rectangle_14" data-name="Rectangle 14" width="10" height="106"/>
     </g>
-    <g id="arms">
-      <line id="Line_7" data-name="Line 7" y1="92" transform="translate(406 125.163) rotate(30)" fill="none" stroke="#000" stroke-width="8"/>
-      <line id="Line_8" data-name="Line 8" y2="92" transform="translate(336 204.837) rotate(150)" fill="none" stroke="#000" stroke-width="8"/>
+    <g id="arms" transform="translate(291.429 104.191)">
+      <rect id="Rectangle_15" data-name="Rectangle 15" width="9.143" height="105.143" transform="translate(60.489 91.238) rotate(150)"/>
+      <rect id="Rectangle_16" data-name="Rectangle 16" width="9.143" height="105.143" transform="translate(132.124 0) rotate(30)"/>
     </g>
   </g>
 </svg>

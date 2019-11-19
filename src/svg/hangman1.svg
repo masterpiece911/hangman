@@ -5,9 +5,9 @@
     </clipPath>
   </defs>
   <g id="hangman1" clip-path="url(#clip-hangman1)">
-    <g id="base">
-      <line id="Line_1" data-name="Line 1" x2="448" transform="translate(32 468)" fill="none" stroke="#000" stroke-width="24"/>
-      <line id="Line_11" data-name="Line 11" y1="48" transform="translate(92 432)" fill="none" stroke="#000" stroke-width="8"/>
+    <g id="base" transform="translate(0 458)">
+      <rect id="Rectangle_3" data-name="Rectangle 3" width="512" height="26" transform="translate(0 28)"/>
+      <rect id="Rectangle_4" data-name="Rectangle 4" width="10" height="54" transform="translate(64)"/>
     </g>
   </g>
 </svg>

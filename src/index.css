@@ -24,6 +24,10 @@ body{
     font-size: 6vw;
     font-weight: 900;
 }
+svg {
+    width: 8vw;
+    height: 8vw;
+}
 .statusContainer{
     width: 100%;
 }
@@ -171,8 +175,4 @@ li {
 }
 button:focus{
     outline:0;
-}
-svg{
-    width: 6vw;
-    height: 6vw;
 }
