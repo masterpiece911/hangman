@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@testing-library/react": "^9.3.2",
+    "@types/jest": "^24.0.23",
     "prop-types": "^15.7.2",
     "random-words": "^1.1.0",
     "react": "^16.11.0",
