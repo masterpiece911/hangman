@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { ReactComponent as HangmanStart } from './svg/hangman.svg';
 import { ReactComponent as HangmanWin } from './svg/hangmanWon.svg';
 import { ReactComponent as Hangman0 } from './svg/hangman0.svg';
@@ -11,6 +12,32 @@ import { ReactComponent as Hangman5 } from './svg/hangman5.svg';
 import { ReactComponent as Hangman6 } from './svg/hangman6.svg';
 import { ReactComponent as Hangman7 } from './svg/hangman7.svg';
 import { ReactComponent as HangmanDead } from './svg/hangmanDead.svg';
+
+const TitleContainer = styled.div`
+  font-family: 'Fira Code';
+
+  width: 100%;
+  justify-content: center;
+
+  padding: 2rem 0 0 0;
+  text-align: center;
+  font-size: 6vw;
+  font-weight: 900;
+
+  svg{
+    width: 8vw;
+    height: 8vw;
+  }
+
+  @media (max-width: 1200px) {
+    padding: 0.5rem 0 0.2rem 0;
+    font-size: 6vw;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 8vw;
+  }
+`;
 
 const Title = ({ tries, isGameFinished, gameStarted }) => {
   const titleA = '==> hangman';
@@ -42,11 +69,11 @@ const Title = ({ tries, isGameFinished, gameStarted }) => {
   };
 
   return (
-    <div className="titlecontainer title fira">
+    <TitleContainer>
       {titleA}
       {getHangman(tries, isGameFinished)}
       {titleB}
-    </div>
+    </TitleContainer>
   );
 };
 
