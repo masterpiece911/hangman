@@ -4,6 +4,6 @@ import Title from '../title';
 
 describe('Title', () => {
   it('renders', () => {
-    render(<Title tries={8} isGameFinished={false} />);
+    render(<Title gameStarted tries={8} isGameFinished={false} />);
   });
 });
