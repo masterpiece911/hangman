@@ -27,7 +27,9 @@
     "lint:fix": "eslint --fix src/**/*.js",
     "testall": "run-script-os",
     "testall:win32": "set CI=true && react-scripts test && npm run lint",
-    "testall:nix": "CI=true && react-scripts test && npm run lint"
+    "testall:nix": "CI=true && react-scripts test && npm run lint",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build -r https://github.com/masterpiece911/hangman"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -51,6 +53,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^1.7.0",
+    "gh-pages": "^2.1.1",
     "husky": "^3.0.9",
     "jest": "^24.9.0"
   },
@@ -61,5 +64,5 @@
       "post-merge": "npm run build"
     }
   },
-  "homepage": "https://pwp.um.ifi.lmu.de/g11"
+  "homepage": "http://masterpiece911.github.ic/hangman"
 }

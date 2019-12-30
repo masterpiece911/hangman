@@ -1,1 +1,1 @@
-Try this project at https://pwp.um.ifi.lmu.de/g11
+Try this project at http://masterpiece911.github.ic/hangman
