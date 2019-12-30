@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <clipPath id="clip-hangmanDead">
+      <rect width="512" height="512"/>
+    </clipPath>
+  </defs>
+  <g id="hangmanDead" clip-path="url(#clip-hangmanDead)">
+    <g id="face" transform="translate(128 128)">
+      <g id="Ellipse_2" data-name="Ellipse 2" fill="none" stroke="#000" stroke-width="32">
+        <circle cx="128" cy="128" r="128" stroke="none"/>
+        <circle cx="128" cy="128" r="112" fill="none"/>
+      </g>
+      <rect id="Rectangle_9" data-name="Rectangle 9" width="96" height="16" transform="translate(80 160)"/>
+      <path id="Path_3" data-name="Path 3" d="M42,54H90V70H42Z" transform="translate(91.8 4.118) rotate(45)"/>
+      <path id="Path_4" data-name="Path 4" d="M42,54H90V70H42Z" transform="translate(158.545 4.118) rotate(45)"/>
+      <path id="Path_5" data-name="Path 5" d="M0,0H48V16H0Z" transform="translate(117.256 83.314) rotate(135)"/>
+      <path id="Path_6" data-name="Path 6" d="M0,0H48V16H0Z" transform="translate(184 83.314) rotate(135)"/>
+      <rect id="Rectangle_20" data-name="Rectangle 20" width="16" height="32" transform="translate(158 160)"/>
+    </g>
+    <g id="rope" transform="translate(240)">
+      <rect id="Rectangle_8" data-name="Rectangle 8" width="32" height="136"/>
+    </g>
+    <g id="torso" transform="translate(240 400)">
+      <rect id="Rectangle_14" data-name="Rectangle 14" width="32" height="112"/>
+    </g>
+    <g id="arms" transform="translate(149.146 400)">
+      <path id="Path_7" data-name="Path 7" d="M.082.007,30.77-.006l-.155,352.051-30.687.013Z" transform="matrix(-0.985, -0.174, 0.174, -0.985, 30.303, 352.013)"/>
+      <path id="Path_8" data-name="Path 8" d="M0,0,30.687.013l.155,352.051L.155,352.051Z" transform="matrix(0.985, -0.174, 0.174, 0.985, 122.199, 5.316)"/>
+    </g>
+  </g>
+</svg>
