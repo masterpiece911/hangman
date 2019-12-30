@@ -11,58 +11,75 @@ describe('Alphabet Button', () => {
   });
 
   it('renders', () => {
-    render(<AlphabetButtons word="TESTINGTON" onLetterSelected={jest.fn()} revealed={resetRevealedMap()} />);
+    render(<AlphabetButtons isGameFinished={false} word="TESTINGTON" onLetterSelected={jest.fn()} revealed={resetRevealedMap()} />);
   });
 
   describe('setup', () => {
-    it('creates 26 letter buttons', () => {
-      const { container } = render(<AlphabetButtons word="TESTINGTON" onLetterSelected={jest.fn()} revealed={resetRevealedMap()} />);
+    it('creates letter buttons for every letter in alphabet', () => {
+      const { getByText } = render(<AlphabetButtons isGameFinished={false} word="TESTINGTON" onLetterSelected={jest.fn()} revealed={resetRevealedMap()} />);
 
-      const buttons = container.getElementsByClassName('alphabetButton');
-      expect(buttons.length).toBe([...alphabet].length);
+      [...alphabet].forEach((letter) => {
+        getByText(letter, (_, element) => element.tagName === 'BUTTON');
+      });
     });
     it('creates unclicked buttons', () => {
-      const { container } = render(<AlphabetButtons word="TESTINGTON" onLetterSelected={jest.fn()} revealed={resetRevealedMap()} />);
+      const { getByText } = render(<AlphabetButtons isGameFinished={false} word="TESTINGTON" onLetterSelected={jest.fn()} revealed={resetRevealedMap()} />);
 
-      const clickedButtonsA = container.getElementsByClassName('inWordClicked');
-      const clickedButtonsB = container.getElementsByClassName('notInWordClicked');
-
-      expect(clickedButtonsA.length).toBe(0);
-      expect(clickedButtonsB.length).toBe(0);
+      [...alphabet].forEach((letter) => {
+        const button = getByText(letter, (_, element) => element.tagName === 'BUTTON');
+        expect(button).toHaveStyle(`
+          border-color: black;
+          background: none;
+          color: black;
+        `);
+      });
     });
     it('creates correct number of clicked buttons', () => {
       const alphabetMap = randomAlphabetMap();
       const { getByText } = render(
         <AlphabetButtons
+          isGameFinished={false}
           word="TESTINGTON"
           onLetterSelected={jest.fn()}
           revealed={alphabetMap}
         />,
       );
 
-      const actualClickedButtons = Array.from(alphabetMap.values()).reduce((counter, value) => {
+      const predictedAmountOfClickedButtons = Array.from(
+        alphabetMap.values(),
+      ).reduce((counter, value) => {
         if (value) {
           return counter + 1;
         }
         return counter;
       }, 0);
-      const clickedButtons = Array.from(alphabetMap.entries()).reduce((counter, value) => {
-        const { className } = getByText(value[0]);
-        if (value[1]) {
-          expect(className).not.toBe('unclicked alphabetButton inter');
-          return counter + 1;
-        }
-        expect(className).toBe('unclicked alphabetButton inter');
-        return counter;
-      }, 0);
-      expect(actualClickedButtons).toBe(clickedButtons);
+      const actualAmountOfClickedButtons = Array.from(alphabetMap.entries()).reduce(
+        (counter, [letter, revealed]) => {
+          const element = getByText(letter);
+          if (revealed) {
+            expect(element).not.toHaveStyle(`
+            border-color: black;
+            background: none;
+            color: black;
+          `);
+            return counter + 1;
+          }
+          expect(element).toHaveStyle(`
+          border-color: black;
+          background: none;
+          color: black;
+        `);
+          return counter;
+        }, 0,
+      );
+      expect(predictedAmountOfClickedButtons).toBe(actualAmountOfClickedButtons);
     });
   });
 
   describe('callback', () => {
     it('calls when a child button is pressed', () => {
       const callback = jest.fn();
-      const { getByText } = render(<AlphabetButtons word="TESTINGTON" onLetterSelected={callback} revealed={resetRevealedMap()} />);
+      const { getByText } = render(<AlphabetButtons isGameFinished={false} word="TESTINGTON" onLetterSelected={callback} revealed={resetRevealedMap()} />);
 
       fireEvent.click(getByText('T'));
 

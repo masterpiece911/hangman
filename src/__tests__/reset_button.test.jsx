@@ -15,7 +15,6 @@ describe('ResetButton', () => {
       fireEvent.click(getByText('NEW GAME'));
 
       expect(callback).toHaveBeenCalled();
-
     });
   });
 });

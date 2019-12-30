@@ -4,7 +4,6 @@ import { render, fireEvent, cleanup } from '@testing-library/react';
 import LetterButton from '../letter_button';
 
 describe('Letter Button', () => {
-
   afterEach(() => {
     cleanup();
     jest.restoreAllMocks();

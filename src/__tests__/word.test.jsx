@@ -20,9 +20,9 @@ describe('Word', () => {
         <Word word={word} revealed={resetRevealedMap()} isGameFinished={false} />,
       );
 
-      const letter = container.getElementsByClassName('letter');
+      const letters = container.getElementsByTagName('SPAN');
 
-      expect(letter.length).toBe(word.length);
+      expect(letters.length).toBe(word.length);
     });
 
     it('letters are unrevealed', () => {
@@ -31,7 +31,7 @@ describe('Word', () => {
         <Word word={word} revealed={resetRevealedMap()} isGameFinished={false} />,
       );
 
-      const letters = container.getElementsByClassName('letter');
+      const letters = container.getElementsByTagName('SPAN');
       const unrevealedLetters = Array.prototype.filter.call(letters, (letter) => letter.innerHTML !== '_');
 
       expect(unrevealedLetters.length).toBe(0);
@@ -51,7 +51,7 @@ describe('Word', () => {
         />,
       );
 
-      const letters = container.getElementsByClassName('letter');
+      const letters = container.getElementsByTagName('span');
 
       [...word].forEach((letter, index) => {
         const output = letters[index].innerHTML;

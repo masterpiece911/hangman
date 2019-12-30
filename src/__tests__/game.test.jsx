@@ -3,6 +3,7 @@ import { render, fireEvent, cleanup } from '@testing-library/react';
 // import renderer from 'react-test-renderer';
 import { Game } from '../game';
 import * as gameHelpers from '../gameHelpers';
+import { alphabet } from '../utils/testHelper';
 
 describe('Game', () => {
   beforeEach(() => {
@@ -23,34 +24,43 @@ describe('Game', () => {
 
   describe('when launching', () => {
     it('has eight tries', () => {
-      const { container } = render(<Game />);
-      const statusText = container.getElementsByClassName('status').item(0).innerHTML;
+      const { getByText } = render(<Game />);
+      const statusText = getByText(/attempts/).innerHTML;
 
       expect(statusText).toBe('8 attempts remaining.');
     });
 
     it('shows right amount of hidden letters', () => {
-      const word = 'TESTINGTON';
+      const word = gameHelpers.randomWord();
       gameHelpers.randomWord.mockImplementationOnce(() => word);
 
-      const { container } = render(<Game />);
-      const letters = container.getElementsByClassName('letter');
+      const { getAllByText } = render(<Game />);
+      const letters = getAllByText('_');
 
       expect(letters.length).toBe(word.length);
     });
 
     it('has no revealed letters', () => {
       const { container } = render(<Game />);
-      const letters = container.getElementsByClassName('letter');
+      const letters = container.getElementsByTagName('span');
       const revealedLetters = Array.prototype.filter.call(letters,
         (letter) => letter.innerHTML !== '_');
       expect(revealedLetters.length).toBe(0);
     });
 
     it('has no clicked alphabet buttons', () => {
-      const { container } = render(<Game />);
-      const clickedButtons = container.getElementsByClassName('unclicked');
-      expect(clickedButtons.length).toBe(26);
+      const { getByText, container } = render(<Game />);
+
+      for (const letter of [...alphabet]) {
+        const elem = getByText(letter, (content, element) => {
+          return element.tagName.toLowerCase() === 'button';
+        });
+        expect(elem).toHaveStyle(`
+          border-color: black;
+          background: none;
+          color: black;
+        `);
+      }
     });
 
     it('fetched a random word', () => {
@@ -60,118 +70,169 @@ describe('Game', () => {
   });
 
   describe('after a user inputs a letter', () => {
-    beforeEach(() => {
-      gameHelpers.randomWord.mockImplementationOnce(() => 'TESTINGTON');
-    });
-
     it('reveals letters when a correct letter was clicked', () => {
-      const { container, getByText } = render(<Game />);
-      let letters;
+      // mock implemenation so I can access the generated word
+      const word = gameHelpers.randomWord();
+      gameHelpers.randomWord.mockImplementationOnce(() => word);
 
-      fireEvent.click(getByText('T'));
-      letters = container.getElementsByClassName('letter');
-      const revealedT = Array.prototype.filter.call(letters,
-        (letter) => letter.innerHTML === 'T');
+      const { getByText, getAllByText } = render(
+        <Game />,
+      );
+      // list of unique letters in word
+      const uniqueLettersInWord = Array.from(new Set([...word]));
+      // take about half of the unique letters and shuffle
+      const revealedLetters = uniqueLettersInWord.sort(
+        () => Math.random() - Math.random(),
+      ).slice(0, Math.floor(uniqueLettersInWord.length / 2));
 
-      expect(revealedT.length).toBe(3);
+      // guess about half of the correct letters
+      revealedLetters.forEach((letter) => {
+        fireEvent.click(getByText(letter));
+      });
 
-      fireEvent.click(getByText('G'));
-      letters = container.getElementsByClassName('letter');
-      const revealedG = Array.prototype.filter.call(letters,
-        (letter) => letter.innerHTML === 'G');
 
-      expect(revealedG.length).toBe(1);
+      // check if the guessed letters have been revealed
+      [...alphabet].forEach((letter) => {
+        const revealedLetterElems = getAllByText(letter).filter((el) => el.nodeName === 'SPAN');
+        if (revealedLetters.includes(letter)) {
+          expect(revealedLetterElems.length > 0).toBeTruthy();
+        } else {
+          expect(revealedLetterElems.length).toEqual(0);
+        }
+      });
     });
 
     it('reveals letters when a correct letter was typed', () => {
-      const { container } = render(<Game />);
-      let letters;
+      // mock implemenation so I can access the generated word
+      const word = gameHelpers.randomWord();
+      gameHelpers.randomWord.mockImplementationOnce(() => word);
 
-      fireEvent.keyDown(container, {
-        key: 'T',
-        code: 84,
-        keyCode: 84,
-        charCode: 84,
+      const { getAllByText, container } = render(
+        <Game />,
+      );
+      // list of unique letters in word
+      const uniqueLettersInWord = Array.from(new Set([...word]));
+      // take about half of the unique letters and shuffle
+      const revealedLetters = uniqueLettersInWord.sort(
+        () => Math.random() - Math.random(),
+      ).slice(0, Math.floor(uniqueLettersInWord.length / 2));
+
+      // guess about half of the correct letters
+      revealedLetters.forEach((letter) => {
+        fireEvent.keyDown(container, {
+          key: letter,
+          code: letter.charCodeAt(0),
+          charCode: letter.charCodeAt(0),
+          keyCode: letter.charCodeAt(0),
+        })
+
       });
-      letters = container.getElementsByClassName('letter');
-      const revealedT = Array.prototype.filter.call(letters,
-        (letter) => letter.innerHTML === 'T');
 
-      expect(revealedT.length).toBe(3);
-
-      fireEvent.keyDown(container, {
-        key: 'G',
-        code: 71,
-        keyCode: 71,
-        charCode: 71,
+      // check if the guessed letters have been revealed
+      [...alphabet].forEach((letter) => {
+        const revealedLetterElems = getAllByText(letter).filter((el) => el.nodeName === 'SPAN');
+        if (revealedLetters.includes(letter)) {
+          expect(revealedLetterElems.length > 0).toBeTruthy();
+        } else {
+          expect(revealedLetterElems.length).toEqual(0);
+        }
       });
-      letters = container.getElementsByClassName('letter');
-      const revealedG = Array.prototype.filter.call(letters,
-        (letter) => letter.innerHTML === 'G');
-
-      expect(revealedG.length).toBe(1);
     });
 
     it("doesn't reveal letters when an incorrect letter was input", () => {
-      const { container, getByText } = render(<Game />);
-      let letters;
 
-      fireEvent.keyDown(container, {
-        key: 'A',
-        code: 65,
-        keyCode: 65,
-        charCode: 65,
+      // mock implemenation so I can access the generated word
+      const word = gameHelpers.randomWord();
+      gameHelpers.randomWord.mockImplementationOnce(() => word);
+
+      const { getByText, getAllByText, container } = render(
+        <Game />,
+      );
+      // list of letters not in word
+      const uniqueLettersInWord = Array.from(new Set([...word]));
+      const lettersNotInWord = [...alphabet].filter((elem) => {
+        return !uniqueLettersInWord.includes(elem);
       });
-      letters = container.getElementsByClassName('letter');
-      const revealedA = Array.prototype.filter.call(letters,
-        (letter) => letter.innerHTML === 'A');
 
-      expect(revealedA.length).toBe(0);
+      // take four letters that are not in the word
+      const lettersToInput = lettersNotInWord.sort(
+        () => Math.random() - Math.random(),
+      ).slice(0, 4);
 
-      fireEvent.click(getByText('B'));
-      letters = container.getElementsByClassName('letter');
-      const revealedB = Array.prototype.filter.call(letters,
-        (letter) => letter.innerHTML === 'B');
+      // input the incorrect letters
+      lettersToInput.forEach((letter) => {
+        fireEvent.keyDown(container, {
+          key: letter,
+          code: letter.charCodeAt(0),
+          charCode: letter.charCodeAt(0),
+          keyCode: letter.charCodeAt(0),
+        })
 
-      expect(revealedB.length).toBe(0);
+      });
+
+      // check if the guessed letters have been revealed
+      [...alphabet].forEach((letter) => {
+        const revealedLetterElems = getAllByText(letter).filter((el) => el.nodeName === 'SPAN');
+        if (lettersToInput.includes(letter)) {
+          expect(revealedLetterElems.length).toEqual(0);
+        }
+      });
+      
     });
   });
 
   describe('when game is finished', () => {
-    const word = 'TESTINGTON';
-
-    beforeEach(() => {
-      gameHelpers.gameFinished.mockImplementation(() => true);
-      gameHelpers.randomWord.mockImplementation(() => word);
-    });
 
     afterEach(() => {
       cleanup();
     });
 
     it('typing of further letters changes nothing', () => {
-      const { container } = render(<Game />);
+      const word = gameHelpers.randomWord();
 
-      const lettersBefore = container.getElementsByClassName('letter');
+      gameHelpers.gameFinished.mockImplementation(() => true);
+      gameHelpers.randomWord.mockImplementation(() => word);
+      gameHelpers.resetTries.mockImplementation(() => 0);
+
+      const { queryAllByText, container } = render(<Game />);
+
+      const lettersBefore = queryAllByText('_').filter((el) => el.nodeName === 'SPAN');
 
       fireEvent.keyDown(container, {
-        key: 'A',
-        code: 65,
-        keyCode: 65,
-        charCode: 65,
+        key: [...word][0],
+        code: word.charCodeAt(0),
+        keyCode: word.charCodeAt(0),
+        charCode: word.charCodeAt(0),
       });
 
-      const lettersAfter = container.getElementsByClassName('letter');
+      const lettersAfter = queryAllByText('_').filter((el) => el.nodeName === 'SPAN');
 
-      expect(lettersBefore).toBe(lettersAfter);
+      expect(lettersBefore).toStrictEqual(lettersAfter);
     });
 
     it('alphabet buttons are hidden', () => {
-      const { container } = render(<Game />);
-      const alphaButtons = container.getElementsByClassName('alphabetContainer').item(0);
+      // mock implementation so I can access generated word
+      const word = gameHelpers.randomWord();
+      gameHelpers.randomWord.mockImplementationOnce(() => word);
 
-      expect(alphaButtons.style.visibility).toBe('hidden');
-      expect(alphaButtons.style.display).toBe('none');
+      const { getByText, container } = render(<Game />);
+
+      // long sequence of code to force a game over event
+      const uniqueLettersInWord = Array.from(new Set([...word]));
+      const lettersNotInWord = [...alphabet].filter(
+        (letter) => !uniqueLettersInWord.includes(letter),
+      );
+      lettersNotInWord.sort(() => Math.random() - Math.random());
+
+      const lettersToClick = lettersNotInWord.slice(0, 8);
+
+      for (let tries = 7; tries >= 0; tries -= 1) {
+        fireEvent.click(getByText(lettersToClick[tries]));
+      }
+
+      // check if the alphabet container is hidden thorugh css
+      const buttons = container.getElementsByTagName("button");
+      expect(buttons.length).toBe(1);
     });
   });
 
