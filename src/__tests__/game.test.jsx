@@ -49,18 +49,16 @@ describe('Game', () => {
     });
 
     it('has no clicked alphabet buttons', () => {
-      const { getByText, container } = render(<Game />);
+      const { getByText } = render(<Game />);
 
-      for (const letter of [...alphabet]) {
-        const elem = getByText(letter, (content, element) => {
-          return element.tagName.toLowerCase() === 'button';
-        });
+      [...alphabet].forEach((letter) => {
+        const elem = getByText(letter, (content, element) => element.tagName.toLowerCase() === 'button');
         expect(elem).toHaveStyle(`
           border-color: black;
           background: none;
           color: black;
         `);
-      }
+      });
     });
 
     it('fetched a random word', () => {
@@ -124,8 +122,7 @@ describe('Game', () => {
           code: letter.charCodeAt(0),
           charCode: letter.charCodeAt(0),
           keyCode: letter.charCodeAt(0),
-        })
-
+        });
       });
 
       // check if the guessed letters have been revealed
@@ -140,19 +137,16 @@ describe('Game', () => {
     });
 
     it("doesn't reveal letters when an incorrect letter was input", () => {
-
       // mock implemenation so I can access the generated word
       const word = gameHelpers.randomWord();
       gameHelpers.randomWord.mockImplementationOnce(() => word);
 
-      const { getByText, getAllByText, container } = render(
+      const { getAllByText, container } = render(
         <Game />,
       );
       // list of letters not in word
       const uniqueLettersInWord = Array.from(new Set([...word]));
-      const lettersNotInWord = [...alphabet].filter((elem) => {
-        return !uniqueLettersInWord.includes(elem);
-      });
+      const lettersNotInWord = [...alphabet].filter((elem) => !uniqueLettersInWord.includes(elem));
 
       // take four letters that are not in the word
       const lettersToInput = lettersNotInWord.sort(
@@ -166,8 +160,7 @@ describe('Game', () => {
           code: letter.charCodeAt(0),
           charCode: letter.charCodeAt(0),
           keyCode: letter.charCodeAt(0),
-        })
-
+        });
       });
 
       // check if the guessed letters have been revealed
@@ -177,12 +170,10 @@ describe('Game', () => {
           expect(revealedLetterElems.length).toEqual(0);
         }
       });
-      
     });
   });
 
   describe('when game is finished', () => {
-
     afterEach(() => {
       cleanup();
     });
@@ -231,7 +222,7 @@ describe('Game', () => {
       }
 
       // check if the alphabet container is hidden thorugh css
-      const buttons = container.getElementsByTagName("button");
+      const buttons = container.getElementsByTagName('button');
       expect(buttons.length).toBe(1);
     });
   });
