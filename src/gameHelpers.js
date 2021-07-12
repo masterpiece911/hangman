@@ -1,11 +1,12 @@
-import wordGenerator from 'random-words';
+import wordGenerator from "random-words";
 
 export const resetTries = () => 8;
 
-export const resetRevealedMap = () => new Map([...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'].map((char) => [char, false]));
+export const resetRevealedMap = () =>
+  new Map([..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"].map((char) => [char, false]));
 
 export const randomWord = () => {
-  let word = '';
+  let word = "";
   while (word.length <= 5) {
     word = wordGenerator();
   }
@@ -17,4 +18,9 @@ export const gameFinished = (tries, letters) => {
     return true;
   }
   return false;
+};
+
+export const hasRevealedLetter = (revealedMap) => {
+  const revealedValues = Array.from(revealedMap.values());
+  return revealedValues.some((value) => value === true);
 };
