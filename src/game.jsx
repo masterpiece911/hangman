@@ -29,11 +29,14 @@ const Wrapper = styled.div`
 `;
 
 export function Game() {
-  const [word, setWord] = useState(randomWord());
-  const [letters, setLetters] = useState(Array.from(new Set([...word])));
-  const [revealedMap, setRevealedMap] = useState(resetRevealedMap());
-  const [tries, setTries] = useState(resetTries());
-  // const title = '==> hangman. <==';
+  const aWord = randomWord();
+
+  const [{ word, letters, revealedMap, tries }, setGameState] = useState({
+    word: aWord,
+    letters: Array.from(new Set([...aWord])),
+    revealedMap: resetRevealedMap(),
+    tries: resetTries(),
+  });
 
   const isGameFinished = gameFinished(tries, letters);
 
@@ -44,20 +47,24 @@ export function Game() {
 
     const newMap = new Map(revealedMap);
     newMap.set(char, true);
-    if (!word.includes(char)) {
-      setTries(tries - 1);
-    } else {
-      setLetters(letters.filter((i) => i !== char));
-    }
-    setRevealedMap(newMap);
+    setGameState({
+      word,
+      letters: word.includes(char)
+        ? letters.filter((i) => i !== char)
+        : letters,
+      revealedMap: newMap,
+      tries: word.includes(char) ? tries : tries - 1,
+    });
   };
 
   const resetGame = () => {
     const newWord = randomWord();
-    setLetters(Array.from(new Set([...newWord])));
-    setWord(newWord);
-    setRevealedMap(resetRevealedMap());
-    setTries(resetTries());
+    setGameState({
+      word: newWord,
+      letters: Array.from(new Set([...newWord])),
+      revealedMap: resetRevealedMap(),
+      tries: resetTries(),
+    });
   };
 
   const keyboardEntry = (entry) => {
