@@ -26,9 +26,6 @@
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.js",
     "lint:fix": "eslint --fix src/**/*.js",
-    "testall": "run-script-os",
-    "testall:win32": "set CI=true && react-scripts test && npm run lint",
-    "testall:nix": "CI=true && react-scripts test && npm run lint",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build -r https://github.com/masterpiece911/hangman"
   },
@@ -62,7 +59,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint:fix",
-      "pre-push": "npm run testall",
+      "pre-push": "CI=true npm run test",
       "post-merge": "npm run build"
     }
   },
