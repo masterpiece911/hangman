@@ -24,10 +24,12 @@ const LetterWrapper = styled.li`
 
   @media (max-width: 1200px) {
     width: ${28 / 5}vw;
+    height: ${42 / 5}vw;
   }
 
   @media (max-width: 480px) {
-    font-size: ${36 / 5}vw;
+    width: ${36 / 5}vw;
+    height: ${54 / 5}vw;
   }
 `;
 
