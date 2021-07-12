@@ -3,14 +3,12 @@ module.exports = {
     browser: true,
     commonjs: true,
     es6: true,
-    "jest": true,
+    jest: true,
   },
-  extends: [
-    'airbnb',
-  ],
+  extends: ["airbnb", "prettier"],
   globals: {
-    Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly',
+    Atomics: "readonly",
+    SharedArrayBuffer: "readonly",
   },
   parserOptions: {
     ecmaFeatures: {
@@ -18,9 +16,6 @@ module.exports = {
     },
     ecmaVersion: 2018,
   },
-  plugins: [
-    'react',
-  ],
-  rules: {
-  },
+  plugins: ["react"],
+  rules: {},
 };
