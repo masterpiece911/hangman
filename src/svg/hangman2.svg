@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <clipPath id="clip-hangman2">
+      <rect width="512" height="512"/>
+    </clipPath>
+  </defs>
+  <g id="hangman2" clip-path="url(#clip-hangman2)">
+    <g id="base" transform="translate(0 458)">
+      <rect id="Rectangle_3" data-name="Rectangle 3" width="512" height="26" transform="translate(0 28)"/>
+      <rect id="Rectangle_4" data-name="Rectangle 4" width="10" height="54" transform="translate(64)"/>
+    </g>
+    <g id="vertical" transform="translate(54)">
+      <rect id="Rectangle_5" data-name="Rectangle 5" width="28" height="512"/>
+      <rect id="Rectangle_6" data-name="Rectangle 6" width="54" height="8" transform="translate(14 14)"/>
+    </g>
+  </g>
+</svg>

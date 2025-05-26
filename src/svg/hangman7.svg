@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <clipPath id="clip-hangman7">
+      <rect width="512" height="512"/>
+    </clipPath>
+  </defs>
+  <g id="hangman7" clip-path="url(#clip-hangman7)">
+    <g id="base" transform="translate(0 458)">
+      <rect id="Rectangle_3" data-name="Rectangle 3" width="512" height="26" transform="translate(0 28)"/>
+      <rect id="Rectangle_4" data-name="Rectangle 4" width="10" height="54" transform="translate(64)"/>
+    </g>
+    <g id="vertical" transform="translate(54)">
+      <rect id="Rectangle_5" data-name="Rectangle 5" width="28" height="512"/>
+      <rect id="Rectangle_6" data-name="Rectangle 6" width="54" height="8" transform="translate(14 14)"/>
+    </g>
+    <g id="horizontal" transform="translate(64 4)">
+      <rect id="Rectangle_7" data-name="Rectangle 7" width="394" height="28"/>
+    </g>
+    <g id="support" transform="translate(82.286 32.036)">
+      <path id="Path_1" data-name="Path 1" d="M5342,119.424l59.526-59.393H5440.1L5342,159.262Z" transform="translate(-5342 -60.031)"/>
+    </g>
+    <g id="rope" transform="translate(356 28)">
+      <rect id="Rectangle_8" data-name="Rectangle 8" width="10" height="76"/>
+    </g>
+    <g id="face" transform="translate(324 100)">
+      <g id="Ellipse_2" data-name="Ellipse 2" fill="none" stroke="#000" stroke-width="8">
+        <circle cx="37" cy="37" r="37" stroke="none"/>
+        <circle cx="37" cy="37" r="33" fill="none"/>
+      </g>
+      <circle id="Ellipse_3" data-name="Ellipse 3" cx="5" cy="5" r="5" transform="translate(22 22)"/>
+      <ellipse id="Ellipse_4" data-name="Ellipse 4" cx="4" cy="5" rx="4" ry="5" transform="translate(42 22)"/>
+      <path id="Subtraction_1" data-name="Subtraction 1" d="M27.429,14.856H0a15.4,15.4,0,0,1,4.017-10.5,12.981,12.981,0,0,1,19.395,0,15.41,15.41,0,0,1,4.017,10.5Z" transform="translate(22.857 40.001)"/>
+    </g>
+    <g id="torso" transform="translate(356 182)">
+      <rect id="Rectangle_14" data-name="Rectangle 14" width="10" height="106"/>
+    </g>
+    <g id="arms" transform="translate(291.429 104.191)">
+      <rect id="Rectangle_15" data-name="Rectangle 15" width="9.143" height="105.143" transform="translate(60.489 91.238) rotate(150)"/>
+      <rect id="Rectangle_16" data-name="Rectangle 16" width="9.143" height="105.143" transform="translate(132.124 0) rotate(30)"/>
+    </g>
+  </g>
+</svg>
