@@ -1,3 +1,21 @@
+.letter-container {
+    float: left;
+    width: 4vw;
+    height: 6vw;
+    position: relative;
+    text-align: center;
+
+    @media (max-width: 1200px) {
+        width: calc(28vh / 5);
+        height: calc(42vh / 5);
+    }
+
+    @media (max-width: 480px) {
+        width: calc(36vh / 5);
+        height: calc(54vh / 5);
+    }
+}
+
 .letter {
     font-family: 'Fira Code';
 
