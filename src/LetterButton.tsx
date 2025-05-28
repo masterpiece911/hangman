@@ -8,23 +8,26 @@ type LetterButtonProps = {
   letterState?: LetterState;
 };
 
-const LetterButton = ({
+function LetterButton({
   letterState = "UNPLAYED",
   onClick,
   letter,
-}: LetterButtonProps) => (
-  <button
-    type="button"
-    onClick={onClick}
-    title="you can also type a letter on your keyboard"
-    className={clsx(classes["letter-button"], {
-      [classes["unclicked"]]: letterState === "UNPLAYED",
-      [classes["clickedPresent"]]: letterState === "VALID",
-      [classes["clickedAbsent"]]: letterState === "INVALID",
-    })}
-  >
-    {letter}
-  </button>
-);
+}: LetterButtonProps) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={letterState !== "UNPLAYED"}
+      title="you can also type a letter on your keyboard"
+      className={clsx(classes["letter-button"], {
+        [classes["unclicked"]]: letterState === "UNPLAYED",
+        [classes["clickedPresent"]]: letterState === "VALID",
+        [classes["clickedAbsent"]]: letterState === "INVALID",
+      })}
+    >
+      {letter}
+    </button>
+  );
+}
 
 export default LetterButton;

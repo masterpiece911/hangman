@@ -49,7 +49,7 @@ export function Game() {
   return (
     <div>
       <Title tries={remainingTries} playState={play} />
-      <Word revealedWord={revealedWord} playState={play} />
+      <Word revealedWord={revealedWord} />
       <Status tries={remainingTries} playState={play} />
       <Keyboard playedLetters={playedLetters} onLetter={onLetter} />
       <ResetButton onClick={() => resetGame()} />

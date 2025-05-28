@@ -35,7 +35,7 @@ const alphabet: Alphabet[] = [
   "z",
 ];
 
-function Keyboard({ playedLetters, onLetter }: KeyboardProps) {
+export default function Keyboard({ playedLetters, onLetter }: KeyboardProps) {
   const alphabetItems = alphabet.map((char) => (
     <li key={char}>
       <LetterButton
@@ -52,5 +52,3 @@ function Keyboard({ playedLetters, onLetter }: KeyboardProps) {
     </div>
   );
 }
-
-export default Keyboard;

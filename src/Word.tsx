@@ -1,10 +1,9 @@
 import classes from "./word.module.css";
 import Letter from "./Letter";
-import type { Play, RevealedWord } from "./useGame";
+import type { RevealedWord } from "./useGame";
 
 type WordProps = {
   revealedWord: RevealedWord;
-  playState: Play;
 };
 
 function Word({ revealedWord }: WordProps) {

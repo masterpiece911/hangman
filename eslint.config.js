@@ -25,7 +25,7 @@ const viteConfig = tseslint.config(
         { allowConstantExport: true },
       ],
     },
-  },
+  }
 );
 
-export default [...viteConfig, eslintPluginPrettierRecommended];
+export default [...viteConfig, ...eslintPluginPrettierRecommended];

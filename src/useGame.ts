@@ -62,19 +62,19 @@ function newGame({
   maxLength = Infinity,
   maxTries = 8,
 }: GameOptions): GameState {
-  return {
+  const newState = {
     tries: maxTries,
     word: randomWord({ minLength, maxLength }) as string,
     playedLetters: new Map<Alphabet, LetterState>(),
   };
+  return newState;
 }
 
 function playLetter(gameState: GameState, char: string): GameState {
   const letter = char.toLowerCase()[0] as Alphabet;
   const playedBefore = gameState.playedLetters.has(letter);
   const letterInWord = gameState.word.toLowerCase().includes(letter);
-  const play = getPlay(gameState);
-  const shouldDecrease = play === "PLAYING" && !playedBefore && !letterInWord;
+  const shouldDecrease = !playedBefore && !letterInWord;
   return {
     ...gameState,
     playedLetters: gameState.playedLetters.set(
@@ -108,10 +108,23 @@ function getPlay(gameState: GameState): Play {
   return "PLAYING";
 }
 
+function gameIsRunning(gameState: GameState): boolean {
+  return ["PLAYING", "START"].includes(getPlay(gameState));
+}
+
 export default function useGame(options: GameOptions): Game {
   const [state, setState] = useState(newGame(options));
 
   const resetGame = useCallback(() => setState(newGame(options)), [options]);
+  const onLetter = useCallback(
+    (letter: string) => {
+      setState((state) => {
+        if (gameIsRunning(state)) return playLetter(state, letter);
+        return state;
+      });
+    },
+    [setState]
+  );
 
   return {
     playedLetters: state.playedLetters,
@@ -119,6 +132,6 @@ export default function useGame(options: GameOptions): Game {
     resetGame,
     play: getPlay(state),
     remainingTries: state.tries,
-    onLetter: (letter) => setState(playLetter(state, letter)),
+    onLetter,
   };
 }
