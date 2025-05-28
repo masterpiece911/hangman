@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { randomWord } from "./gameHelpers";
+import { generate as randomWord } from "random-words";
 
 export type Alphabet =
   | "a"
@@ -64,8 +64,7 @@ function newGame({
 }: GameOptions): GameState {
   return {
     tries: maxTries,
-    // TODO pass min max length to randomWord
-    word: randomWord(),
+    word: randomWord({ minLength, maxLength }) as string,
     playedLetters: new Map<Alphabet, LetterState>(),
   };
 }
