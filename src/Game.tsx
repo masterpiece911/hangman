@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import Word from "./Word.tsx";
 import Status from "./Status.tsx";
 import ResetButton from "./ResetButton.tsx";
@@ -24,25 +23,22 @@ export function Game() {
     onLetter,
   } = useGame(OPTIONS);
 
-  const keyboardOptions = useMemo<UseKeyboardOptions>(
-    () => ({
-      handlers: {
-        " ": (e) => {
-          e.preventDefault();
-          resetGame();
-        },
-        Enter: (e) => {
-          e.preventDefault();
-          resetGame();
-        },
+  const keyboardOptions: UseKeyboardOptions = {
+    handlers: {
+      " ": (e) => {
+        e.preventDefault();
+        resetGame();
       },
-      onLetter: (_, letter) => {
-        onLetter(letter);
+      Enter: (e) => {
+        e.preventDefault();
+        resetGame();
       },
-      target: document,
-    }),
-    [resetGame, onLetter],
-  );
+    },
+    onLetter: (_, letter) => {
+      onLetter(letter);
+    },
+    target: document,
+  };
 
   useKeyboard(keyboardOptions);
 
