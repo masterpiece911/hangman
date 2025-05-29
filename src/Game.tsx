@@ -41,7 +41,7 @@ export function Game() {
       },
       target: document,
     }),
-    [resetGame, onLetter]
+    [resetGame, onLetter],
   );
 
   useKeyboard(keyboardOptions);

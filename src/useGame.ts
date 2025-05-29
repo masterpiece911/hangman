@@ -79,7 +79,7 @@ function playLetter(gameState: GameState, char: string): GameState {
     ...gameState,
     playedLetters: gameState.playedLetters.set(
       letter,
-      letterInWord ? "VALID" : "INVALID"
+      letterInWord ? "VALID" : "INVALID",
     ),
     tries: shouldDecrease ? (gameState.tries -= 1) : gameState.tries,
   };
@@ -91,7 +91,7 @@ function getRevealedLetters(gameState: GameState): RevealedWord {
     return Array.from(gameState.word.toLowerCase());
   else
     return Array.from(gameState.word.toLowerCase()).map((char) =>
-      gameState.playedLetters.has(char.toLowerCase() as Alphabet) ? char : null
+      gameState.playedLetters.has(char.toLowerCase() as Alphabet) ? char : null,
     );
 }
 
@@ -100,7 +100,7 @@ function getPlay(gameState: GameState): Play {
   if (
     gameState.tries > 0 &&
     Array.from(gameState.word.toLowerCase()).every((letter) =>
-      gameState.playedLetters.get(letter.toLowerCase() as Alphabet)
+      gameState.playedLetters.get(letter.toLowerCase() as Alphabet),
     )
   )
     return "WIN";
@@ -123,7 +123,7 @@ export default function useGame(options: GameOptions): Game {
         return state;
       });
     },
-    [setState]
+    [setState],
   );
 
   return {

@@ -54,7 +54,7 @@ describe("useGame", () => {
   });
 
   it("decreases remaining tries on an invalid guess once", () => {
-    const { result, rerender } = renderHook(() => useGame({ maxTries: 3 }));
+    const { result } = renderHook(() => useGame({ maxTries: 3 }));
 
     act(() => {
       result.current.onLetter("z");
@@ -122,7 +122,7 @@ describe("useGame", () => {
     const { result } = renderHook(() => useGame({ maxTries: 5 }));
     act(() => result.current.onLetter("T"));
     expect(
-      result.current.revealedWord.filter((c) => c !== null).length
+      result.current.revealedWord.filter((c) => c !== null).length,
     ).toBeGreaterThan(0);
     expect(result.current.remainingTries).toBe(5);
     expect(result.current.play).toBe("PLAYING");
@@ -162,7 +162,7 @@ describe("useGame", () => {
     expect(result.current.play).toBe("WIN");
     const before = {
       tries: result.current.remainingTries,
-      revealed: [...result.current.revealedWord] as any[],
+      revealed: [...result.current.revealedWord],
     };
     act(() => result.current.onLetter("z"));
     expect(result.current.remainingTries).toBe(before.tries);

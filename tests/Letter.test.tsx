@@ -15,6 +15,6 @@ describe("Letter", () => {
       render(<Letter animate={false} letter={letter} />);
 
       expect(await screen.findByText(letter.toUpperCase())).toBeInTheDocument();
-    }
+    },
   );
 });

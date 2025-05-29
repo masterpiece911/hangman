@@ -7,7 +7,7 @@ describe("LetterButton", () => {
   it("calls provided callback on click when unplayed", async () => {
     const callback = vi.fn();
     render(
-      <LetterButton letterState="UNPLAYED" onClick={callback} letter="a" />
+      <LetterButton letterState="UNPLAYED" onClick={callback} letter="a" />,
     );
 
     await userEvent.click(await screen.findByRole("button", { name: /a/ }));
@@ -20,12 +20,16 @@ describe("LetterButton", () => {
     async (letterState) => {
       const callback = vi.fn();
       render(
-        <LetterButton letterState={letterState} onClick={callback} letter="a" />
+        <LetterButton
+          letterState={letterState}
+          onClick={callback}
+          letter="a"
+        />,
       );
 
       await userEvent.click(await screen.findByRole("button", { name: /a/ }));
 
       expect(callback).not.toHaveBeenCalled();
-    }
+    },
   );
 });

@@ -3,7 +3,7 @@ import globals from "globals";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import tseslint from "typescript-eslint";
-import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
+import eslintConfigPrettier from "eslint-config-prettier/flat";
 
 const viteConfig = tseslint.config(
   { ignores: ["dist"] },
@@ -25,7 +25,7 @@ const viteConfig = tseslint.config(
         { allowConstantExport: true },
       ],
     },
-  }
+  },
 );
 
-export default [...viteConfig, ...eslintPluginPrettierRecommended];
+export default [...viteConfig, eslintConfigPrettier];
