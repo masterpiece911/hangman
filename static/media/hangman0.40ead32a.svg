@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" viewBox="0 0 512 512">
-  <defs>
-    <clipPath id="clip-hangman0">
-      <rect width="512" height="512"/>
-    </clipPath>
-  </defs>
-  <g id="hangman0" clip-path="url(#clip-hangman0)"/>
-</svg>
