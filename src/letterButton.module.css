@@ -1,0 +1,63 @@
+.letter-button {
+  font-family: "Inter";
+  height: 1.5em;
+  width: 1.5em;
+  border: 0.6vw solid black;
+  margin: 0.3vw;
+  font-weight: 900;
+  padding: 0;
+  font-size: 3.4vw;
+  text-align: center;
+  transition-duration: 0.5s;
+}
+
+.letter-button:focus {
+  outline: 0;
+}
+
+.unclicked {
+  background: none;
+  color: black;
+}
+.unclicked:hover {
+  color: white;
+  background: black;
+  border-color: transparent;
+  transition-duration: 0.2s;
+}
+
+.clickedPresent {
+  background: green;
+  color: white;
+  border-color: transparent;
+}
+
+.clickedAbsent {
+  background: red;
+  color: white;
+  border-color: transparent;
+}
+
+@media (max-width: 1200px) {
+  .button {
+    border: 0.9vw solid black;
+    margin: 0.45vw;
+    font-size: 5vw;
+  }
+  .clickedPresent,
+  .clickedAbsent {
+    border-color: transparent;
+  }
+}
+
+@media (max-width: 480px) {
+  .button {
+    border: 1.6vw solid black;
+    margin: 0.8vw;
+    font-size: 9vw;
+  }
+  .clickedPresent,
+  .clickedAbsent {
+    border-color: transparent;
+  }
+}

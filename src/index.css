@@ -1,0 +1,10 @@
+:root {
+  width: 75%;
+  margin: auto;
+  flex-flow: column nowrap;
+  display: flex;
+
+  @media (max-width: 1200px) {
+    width: 90%;
+  }
+}

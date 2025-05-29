@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <clipPath id="clip-hangmanWon">
+      <rect width="512" height="512"/>
+    </clipPath>
+  </defs>
+  <g id="hangmanWon" clip-path="url(#clip-hangmanWon)">
+    <g id="torso" transform="translate(240 404)">
+      <rect id="Rectangle_14" data-name="Rectangle 14" width="32" height="108"/>
+    </g>
+    <g id="arms" transform="translate(188.934 132)">
+      <path id="Path_2" data-name="Path 2" d="M31.61,6.1V119.512H0V11.806Z" transform="matrix(-0.985, -0.174, 0.174, -0.985, 30.07, 391.722)"/>
+      <rect id="Rectangle_16" data-name="Rectangle 16" width="32" height="180" transform="translate(212.439 158.093) rotate(45)"/>
+      <rect id="Rectangle_19" data-name="Rectangle 19" width="32" height="180" transform="translate(203.066)"/>
+    </g>
+    <g id="face" transform="translate(128 120)">
+      <g id="Ellipse_2" data-name="Ellipse 2" fill="none" stroke="#000" stroke-width="32">
+        <circle cx="128" cy="128" r="128" stroke="none"/>
+        <circle cx="128" cy="128" r="112" fill="none"/>
+      </g>
+      <ellipse id="Ellipse_3" data-name="Ellipse 3" cx="16" cy="15.938" rx="16" ry="15.938" transform="translate(80 80.125)"/>
+      <ellipse id="Ellipse_4" data-name="Ellipse 4" cx="16" cy="15.938" rx="16" ry="15.938" transform="translate(144 80.125)"/>
+      <path id="Subtraction_1" data-name="Subtraction 1" d="M47.977,51.975A44.53,44.53,0,0,1,29.3,47.89a47.8,47.8,0,0,1-15.25-11.139A52.239,52.239,0,0,1,3.77,20.231,55.39,55.39,0,0,1,0,0H95.954a55.389,55.389,0,0,1-3.77,20.231A52.239,52.239,0,0,1,81.9,36.752,47.8,47.8,0,0,1,66.652,47.89,44.53,44.53,0,0,1,47.977,51.975Z" transform="translate(79.963 139.932)"/>
+    </g>
+  </g>
+</svg>
